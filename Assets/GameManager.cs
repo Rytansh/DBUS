@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     private Player player1;
     private Player player2;
 
+    private Player currentTurn;
+
     public void StartBattle()
     {
         cardDatabase.Initialise();
@@ -32,7 +34,9 @@ public class GameManager : MonoBehaviour
         player1.Initialise(player1Data);
 
         player2 = new Player();
-        player2.Initialise(player2Data);
+        //player2.Initialise(player2Data);
+
     }
+
 }
 
