@@ -1576,7 +1576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9dd3b4a3e83e440b680de2ab3d98b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterJsonAddress: C2_Krillin
+  characterAddresses:
+  - C2_Krillin
 --- !u!4 &798985355
 Transform:
   m_ObjectHideFlags: 0

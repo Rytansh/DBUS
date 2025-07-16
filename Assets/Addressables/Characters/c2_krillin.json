@@ -2,12 +2,14 @@
   "id": "C2",
   "cardtype": "Character",
   "name": "Krillin",
-  "battletype": "Magical",
   "specialty": "Acceleration",
-  "rarity": "NS",
   "stats": {
     "attack": 5084,
     "defense": 3666,
     "health": 72901
+  },
+  "character_exclusive_data": {
+    "battletype": "Magical",
+    "rarity": "Normal"
   }
 }

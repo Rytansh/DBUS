@@ -5,32 +5,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerUI player1UI;
     [SerializeField] private PlayerUI player2UI;
 
+    [SerializeField] private EntityLoader entityLoaderP1;
+    [SerializeField] private EntityLoader entityLoaderP2;
+
     private Player player1;
     private Player player2;
 
-    private Player currentTur;
 
     public void StartBattle()
     {
-        // cardDatabase.Initialise();
-        // PlayerInitData player1Data = new PlayerInitData
-        // {
-        //     deckConfig = p1DeckConfig,
-        //     cardDatabase = cardDatabase,
-        //     playerUI = player1UI
-        // };
+        player1 = new Player();
+        player1.Initialise(entityLoaderP1);
 
-        // PlayerInitData player2Data = new PlayerInitData
-        // {
-        //     deckConfig = p2DeckConfig,
-        //     cardDatabase = cardDatabase,
-        //     playerUI = player2UI
-        // };
-
-        // player1 = new Player();
-        // player1.Initialise(player1Data);
-
-        // player2 = new Player();
+        //player2 = new Player();
         //player2.Initialise(player2Data);
 
     }

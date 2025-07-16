@@ -6,7 +6,7 @@ public class Player
     private PlayerHand playerHand;
     private PlayerUI playerUI;
 
-    public void Initialise(PlayerInitData data)
+    public void Initialise(EntityLoader loader)
     {
         // playerDeck = new PlayerDeck();
         // playerDeck.Initialise(data.deckConfig, data.cardDatabase);
