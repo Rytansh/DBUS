@@ -11,29 +11,30 @@ public class EntityLoader : MonoBehaviour
 {
     [SerializeField] private string[] characterAddresses; // e.g. "C2_Krillin"
 
-    private async void Start()
+    public async Task<List<RuntimeCard>> LoadAllCards()
     {
-        List<Task> loadTasks = new List<Task>();
+        List<Task<RuntimeCard>> loadTasks = new List<Task<RuntimeCard>>();
 
         foreach (string address in characterAddresses)
         {
             loadTasks.Add(LoadCardAsync(address));
         }
 
-        await Task.WhenAll(loadTasks);
+        RuntimeCard[] results = await Task.WhenAll(loadTasks);
+        return new List<RuntimeCard>(results);
     }
 
-    private async Task LoadCardAsync(string address)
+    private async Task<RuntimeCard> LoadCardAsync(string address)
     {
-        var handle = Addressables.LoadAssetAsync<TextAsset>(address);
+        AsyncOperationHandle<TextAsset> handle = Addressables.LoadAssetAsync<TextAsset>(address); //loads the file at the address into a handle of type operation
         await handle.Task;
 
-        if (handle.Status != AsyncOperationStatus.Succeeded){ Debug.LogError("Failed to load JSON: " + address); return; }
+        if (handle.Status != AsyncOperationStatus.Succeeded) { Debug.LogError("Failed to load JSON: " + address); return null; }
 
-        CardData data = JsonConvert.DeserializeObject<CardData>(handle.Result.text);
+        CardData data = JsonConvert.DeserializeObject<CardData>(handle.Result.text); //deserialises the handle into card data
 
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        Entity entity; //define an empty entity
+        Entity entity = Entity.Null; //define an empty entity
 
         switch (data.cardtype)
         {
@@ -70,6 +71,13 @@ public class EntityLoader : MonoBehaviour
                 Debug.LogWarning($"Unknown card type: {data.cardtype}");
                 break;
         }
+        return new RuntimeCard
+        {
+            id = data.id,
+            card_type = data.cardtype,
+            full_data = data,
+            card_entity = entity
+        };
     }
 
 }

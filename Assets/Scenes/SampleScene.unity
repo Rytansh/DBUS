@@ -1335,7 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1UI: {fileID: 1932792728}
-  player2UI: {fileID: 0}
+  entityLoaderP1: {fileID: 798985354}
 --- !u!4 &720043419
 Transform:
   m_ObjectHideFlags: 0
@@ -1950,7 +1950,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 720043418}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartBattle
+        m_MethodName: StartBattleButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -4,7 +4,7 @@ using Unity.Entities;
 public class RuntimeCard
 {
     public string id;
-    public CardType cardType;
-    public Entity entity;      
-    public CardData fullData; 
+    public CardType card_type;
+    public Entity card_entity;      
+    public CardData full_data; 
 }

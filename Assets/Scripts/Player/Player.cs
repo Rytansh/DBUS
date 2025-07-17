@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Player
@@ -6,29 +7,30 @@ public class Player
     private PlayerHand playerHand;
     private PlayerUI playerUI;
 
-    public void Initialise(EntityLoader loader)
+    public async Task Initialise(EntityLoader loader)
     {
-        // playerDeck = new PlayerDeck();
-        // playerDeck.Initialise(data.deckConfig, data.cardDatabase);
+        playerDeck = new PlayerDeck();
+        await playerDeck.Initialise(loader);
 
-        // playerUI = data.playerUI;
-        // playerUI.Initialise();
-
-        // playerHand = new PlayerHand();
-        // playerHand.Initialise();
-        // FillPlayerHand();
-
-        //foreach (CardSO card in playerDeck.GetPlayerDeck()) { Debug.Log("In Deck:" + card); }
+        playerHand = new PlayerHand();
+        playerHand.Initialise();
+        FillPlayerHand();
     }
 
     public void FillPlayerHand()
     {
-        // while (playerHand.CheckForAvailableSlots() && playerDeck.HasCards())
-        // {
-        //     //CardSO cardToPlace = playerDeck.DrawAndRemoveRandomCard();
-        //     //if (cardToPlace == null) break;
-        //     //playerHand.PlaceCardInHand(cardToPlace);
-        // }
-        // playerUI.GetPlayerHandUI().RefreshSlotsUI(playerHand.GetPlayerHand());
+        if(playerHand == null || playerDeck == null) { return; }
+        while (playerHand.CheckForAvailableSlots() && playerDeck.HasCards())
+        {
+            RuntimeCard cardToPlace = playerDeck.DrawAndRemoveRandomCard();
+            if (cardToPlace == null) break;
+            playerHand.PlaceCardInHand(cardToPlace);
+        }
+        foreach (RuntimeCard card in playerHand.GetPlayerHand())
+        {
+            if (card == null) { continue; }
+            if (card.full_data == null) { Debug.Log("Null card data"); continue; }
+            Debug.Log(card.full_data.name);
+        }
     }
 }
