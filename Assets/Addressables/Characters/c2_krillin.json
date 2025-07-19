@@ -2,6 +2,8 @@
   "id": "C2",
   "cardtype": "Character",
   "name": "Krillin",
+  "sprite_address": "c2_krillin_sprite",
+  "prefab_address": "c2_krillin_prefab",
   "specialty": "Acceleration",
   "stats": {
     "attack": 5084,

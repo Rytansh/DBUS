@@ -68,6 +68,8 @@ public class CardData
     public string id;
     public CardType cardtype;
     public string name;
+    public string sprite_address;
+    public string prefab_address;
     public BattleType battletype;
     public Speciality specialty;
     public Stats stats;

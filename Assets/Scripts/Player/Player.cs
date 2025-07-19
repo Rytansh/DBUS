@@ -7,30 +7,28 @@ public class Player
     private PlayerHand playerHand;
     private PlayerUI playerUI;
 
-    public async Task Initialise(EntityLoader loader)
+    public async Task Initialise(PlayerInitData loadedData)
     {
+        playerUI = loadedData.playerUI;
+        playerUI.Initialise();
+
         playerDeck = new PlayerDeck();
-        await playerDeck.Initialise(loader);
+        await playerDeck.Initialise(loadedData.loader);
 
         playerHand = new PlayerHand();
         playerHand.Initialise();
-        FillPlayerHand();
+        await FillPlayerHand();
     }
 
-    public void FillPlayerHand()
+    public async Task FillPlayerHand()
     {
-        if(playerHand == null || playerDeck == null) { return; }
+        if (playerHand == null || playerDeck == null) { return; }
         while (playerHand.CheckForAvailableSlots() && playerDeck.HasCards())
         {
             RuntimeCard cardToPlace = playerDeck.DrawAndRemoveRandomCard();
             if (cardToPlace == null) break;
             playerHand.PlaceCardInHand(cardToPlace);
         }
-        foreach (RuntimeCard card in playerHand.GetPlayerHand())
-        {
-            if (card == null) { continue; }
-            if (card.full_data == null) { Debug.Log("Null card data"); continue; }
-            Debug.Log(card.full_data.name);
-        }
+        await playerUI.GetPlayerHandUI().RefreshSlotsUI(playerHand.GetPlayerHand());
     }
 }

@@ -20,6 +20,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84504d864ff7e724e9e40edbc98a2a56
+    m_Address: c2_krillin_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90e639e8e8ca17549b2fc991757ea824
+    m_Address: c2_krillin_prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a4667093fd23b1a4da9c90bab1e6f15b, type: 2}
   m_SchemaSet:

@@ -20,8 +20,13 @@ public class GameManager : MonoBehaviour
     }
     private async Task StartBattle()
     {
+        PlayerInitData initDataP1 = new PlayerInitData
+        {
+            playerUI = player1UI,
+            loader = entityLoaderP1
+        };
         player1 = new Player();
-        await player1.Initialise(entityLoaderP1); 
+        await player1.Initialise(initDataP1); 
     }
 
 }

@@ -5,7 +5,7 @@ public class HandSlotUI : MonoBehaviour
 {
     [SerializeField] private Image icon;
     [SerializeField] private Button slotButton;
-    //private CardSO heldCard;
+    private RuntimeCard heldCard;
 
     public void Initialise()
     {
@@ -18,17 +18,17 @@ public class HandSlotUI : MonoBehaviour
         Debug.Log("Menu shown");
     }
 
-    // public void FillSlot(CardSO card)
-    // {
-    //     this.gameObject.SetActive(true);
-    //     heldCard = card;
-    //     icon.sprite = card.GetSprite();
-    // }
+    public void FillSlot(RuntimeCard card, Sprite card_sprite)
+    {
+        this.gameObject.SetActive(true);
+        heldCard = card;
+        icon.sprite = card_sprite;
+    }
 
     public void EmptySlot()
     {
         icon.sprite = null;
-        //heldCard = null;
+        heldCard = null;
         this.gameObject.SetActive(false);
     }
 }
