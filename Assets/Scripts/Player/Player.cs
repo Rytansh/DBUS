@@ -9,14 +9,14 @@ public class Player
 
     public async Task Initialise(PlayerInitData loadedData)
     {
-        playerUI = loadedData.playerUI;
-        playerUI.Initialise();
-
         playerDeck = new PlayerDeck();
         await playerDeck.Initialise(loadedData.loader);
 
         playerHand = new PlayerHand();
         playerHand.Initialise();
+
+        playerUI = loadedData.playerUI;
+        playerUI.Initialise();
         await FillPlayerHand();
     }
 

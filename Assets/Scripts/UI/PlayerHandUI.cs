@@ -6,13 +6,13 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class PlayerHandUI : MonoBehaviour
 {
-    [SerializeField] private HandSlotUI[] handSlots = new HandSlotUI[4];
+    [SerializeField] private HandSlotUI[] handSlots;
 
-    public void Initialise()
+    public void Initialise(HandFieldConnector handFieldConnector)
     {
         foreach (HandSlotUI handSlot in handSlots)
         {
-            handSlot.Initialise();
+            handSlot.Initialise(handFieldConnector);
         }
     }
 
