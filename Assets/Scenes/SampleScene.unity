@@ -940,9 +940,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720043418}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartBattleButton
+      - m_Target: {fileID: 131667231}
+        m_TargetAssemblyTypeName: TurnSystem, Assembly-CSharp
+        m_MethodName: StartNewTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
