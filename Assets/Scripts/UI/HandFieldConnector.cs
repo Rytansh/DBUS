@@ -6,6 +6,8 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class HandFieldConnector : MonoBehaviour
 {
+    // TODO: Card isn't properly removed from hand yet when placed.
+    // Remove this script, and relocate these functions to a more appropriate location.
     public Menu cardHandClickedMenu;
     private PlayerHandUI playerHandUI;
     private PlayerFieldUI playerFieldUI;
@@ -34,6 +36,7 @@ public class HandFieldConnector : MonoBehaviour
         {
             foreach (FieldSlotUI slot in playerFieldUI.GetCharacterSlots())
             {
+                if (slot.gameObject.transform.childCount > 0) { continue; }
                 slot.EnableSlotClick(async () => await PlaceCardInSlot(card, slot));
             }
         }
@@ -41,6 +44,7 @@ public class HandFieldConnector : MonoBehaviour
         {
             foreach (FieldSlotUI slot in playerFieldUI.GetSkillSlots())
             {
+                if (slot.gameObject.transform.childCount > 0) { continue; }
                 slot.EnableSlotClick(async () => await PlaceCardInSlot(card, slot));
             }
         }
@@ -50,8 +54,18 @@ public class HandFieldConnector : MonoBehaviour
     private async Task PlaceCardInSlot(RuntimeCard card, FieldSlotUI slot)
     {
         Debug.Log($"Placing {card.full_data.name} in {slot.GetSlotType()} slot {slot.GetIndex()}");
+        if (slot.gameObject.transform.childCount > 0) { return; }
         await LoadCardPrefab(card);
         Instantiate(card.card_prefab, slot.transform);
+        foreach (FieldSlotUI s in playerFieldUI.GetCharacterSlots())
+        {
+            s.DisableSlotClick();
+        }
+        foreach (FieldSlotUI s in playerFieldUI.GetSkillSlots())
+        {
+            s.DisableSlotClick();
+        }
+        Debug.Log("Card placed.");
     }
 
     private void OpenCardDetails(RuntimeCard card)
