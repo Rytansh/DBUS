@@ -1,5 +1,5 @@
 using UnityEngine;
-using DBUS.Events.Turns;
+using DBUS.Events.Gameplay.Turns;
 
 public class TurnSystem : MonoBehaviour
 {

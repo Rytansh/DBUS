@@ -6,13 +6,18 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private PlayerFieldUI playerfieldUI;
     [SerializeField] private HandFieldConnector handFieldConnector;
 
-    private TurnViewController turnViewController;
+    [SerializeField] private Menu attackOptionsMenu;
 
-    public void Initialise()
+    private TurnViewController turnViewController;
+    private AttackOptionsMenu attackOptionsController;
+    
+
+    public void Initialise(Player player)
     {
         playerhandUI.Initialise(handFieldConnector);
         playerfieldUI.Initialise();
-        handFieldConnector.Initialise(playerhandUI, playerfieldUI);
+        handFieldConnector.Initialise(player, playerhandUI, playerfieldUI);
+        attackOptionsController = new AttackOptionsMenu(player, attackOptionsMenu);
     }
 
     public PlayerHandUI GetPlayerHandUI() { return playerhandUI; }

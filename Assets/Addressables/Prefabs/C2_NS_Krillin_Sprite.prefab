@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5707199326136291065}
   - component: {fileID: 5012889572884585206}
+  - component: {fileID: 1826525233938477980}
+  - component: {fileID: -5314113646164635319}
   m_Layer: 0
   m_Name: C2_NS_Krillin_Sprite
   m_TagString: Untagged
@@ -87,3 +89,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1826525233938477980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903886079140160406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c2ccebe83b1b545a3bd7827c06cef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &-5314113646164635319
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903886079140160406}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.96, y: 6.23, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

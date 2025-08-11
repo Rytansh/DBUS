@@ -3,6 +3,7 @@ using Unity.Entities;
 
 public class RuntimeCard
 {
+    public Player owner;
     public string id;
     public Sprite card_sprite;
     public GameObject card_prefab;

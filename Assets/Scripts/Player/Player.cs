@@ -16,7 +16,7 @@ public class Player
         playerHand.Initialise();
 
         playerUI = loadedData.playerUI;
-        playerUI.Initialise();
+        playerUI.Initialise(this);
         await FillPlayerHand();
     }
 

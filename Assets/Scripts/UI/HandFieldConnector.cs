@@ -11,10 +11,12 @@ public class HandFieldConnector : MonoBehaviour
     public Menu cardHandClickedMenu;
     private PlayerHandUI playerHandUI;
     private PlayerFieldUI playerFieldUI;
-    public void Initialise(PlayerHandUI playerHandUI, PlayerFieldUI playerFieldUI)
+    private Player player;
+    public void Initialise(Player player, PlayerHandUI playerHandUI, PlayerFieldUI playerFieldUI)
     {
         this.playerFieldUI = playerFieldUI;
         this.playerHandUI = playerHandUI;
+        this.player = player;
     }
 
     public void ShowCardHandClickedMenu(RuntimeCard card)
@@ -22,7 +24,8 @@ public class HandFieldConnector : MonoBehaviour
         List<MenuOption> options = new List<MenuOption>
         {
             new MenuOption("Place Card", () => BeginCardPlacement(card)),
-            new MenuOption("Card Details", () => OpenCardDetails(card))
+            new MenuOption("Card Details", () => OpenCardDetails(card)),
+            new MenuOption("Cancel", () => cardHandClickedMenu.Hide())
         };
         Vector3 positionToShow = new Vector3(Input.mousePosition.x - 200, Input.mousePosition.y, Input.mousePosition.z);
         cardHandClickedMenu.Show(positionToShow, options);
@@ -56,7 +59,8 @@ public class HandFieldConnector : MonoBehaviour
         Debug.Log($"Placing {card.full_data.name} in {slot.GetSlotType()} slot {slot.GetIndex()}");
         if (slot.gameObject.transform.childCount > 0) { return; }
         await LoadCardPrefab(card);
-        Instantiate(card.card_prefab, slot.transform);
+        GameObject placedCard = Instantiate(card.card_prefab, slot.transform);
+        placedCard.GetComponent<ClickableCard>().Initialise(card, player);
         foreach (FieldSlotUI s in playerFieldUI.GetCharacterSlots())
         {
             s.DisableSlotClick();

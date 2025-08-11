@@ -1,4 +1,4 @@
-namespace DBUS.Events.Turns
+namespace DBUS.Events.Gameplay.Turns
 {
     public struct TurnStartedEvent
     {

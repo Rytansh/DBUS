@@ -10,7 +10,6 @@ using Newtonsoft.Json;
 public class EntityLoader : MonoBehaviour
 {
     [SerializeField] private string[] characterAddresses; // e.g. "C2_Krillin"
-
     public async Task<List<RuntimeCard>> LoadAllCards()
     {
         List<Task<RuntimeCard>> loadTasks = new List<Task<RuntimeCard>>();
